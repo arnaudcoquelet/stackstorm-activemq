@@ -1,4 +1,4 @@
-# RabbitMQ Integration Pack
+# ActiveMQ Integration Pack
 
 Pack which allows integration with [ActiveMQ](https://activemq.apache.org/).
 
