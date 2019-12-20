@@ -8,7 +8,7 @@ Configuration is required to use the ActiveMQ sensor. Copy the example configura
 in [activemq.yaml.example](./activemq.yaml.example) to `/opt/stackstorm/configs/activemq.yaml`
 and edit as required.
 
-* ``host`` - ActiveMQ host to connect to.
+* ``hosts`` - List of ActiveMQ host to connect to.
 * ``username`` - Username to connect to ActiveMQ.
 * ``password`` - Password to connect to ActiveMQ.
 * ``topics`` - List of topics to check for messages. See an example below.
