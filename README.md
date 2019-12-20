@@ -1,6 +1,6 @@
 # ActiveMQ Integration Pack
 
-Pack which allows integration with [ActiveMQ](https://activemq.apache.org/).
+Pack which allows integration with [ActiveMQ](https://activemq.apache.org/) using [QPID Proton](http://qpid.apache.org/proton/) library.
 
 ## Configuration
 
