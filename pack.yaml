@@ -1,17 +1,16 @@
 ---
-ref: rabbitmq
-name : rabbitmq
-description : RabbitMQ integration
+ref: activemq
+name : activemq
+description : ActiveMQ integration
 keywords:
-  - rabbitmq
+  - activemq
   - queuing
   - messaging
   - aqmp
   - stomp
   - message broker
-version: 0.5.3
+version: 0.1.0
 python_versions:
   - "2"
-  - "3"
-author : StackStorm, Inc.
-email : info@stackstorm.com
+author : Arnaud Coquelet
+email : email@email.com
