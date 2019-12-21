@@ -1,29 +1,31 @@
 ---
   sensor_config:
-    description: "RabbitMQ Sensor settings"
+    description: "ActiveMQ Sensor settings"
     type: "object"
     required: true
     additionalProperties: true
     properties:
-      host:
-        description: "RabbitMQ host to connect to"
-        type: "string"
-        required: true
+      hosts:
+        description: "ActiveMQ hosts to connect to"
+        type: "array"
+        items:
+          type: "string"
+          required: true
       username:
-        description: "Optional username for RabbitMQ"
+        description: "Username for ActiveMQ"
         type: "string"
       password:
-        description: "Optional password for RabbitMQ"
+        description: "Password for ActiveMQ"
         type: "string"
         secret: true
-      rabbitmq_queue_sensor:
-        description: "Queue settings"
+      activemq_topic_sensor:
+        description: "Topic settings"
         type: "object"
         required: true
         additionalProperties: true
         properties:
-          queues:
-            description: "List of queues to monitor"
+          topics:
+            description: "List of topics to monitor"
             type: "array"
             items:
               type: "string"
