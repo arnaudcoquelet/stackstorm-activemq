@@ -92,7 +92,7 @@ class ActiveMQTopicSensor(Sensor):
         try:
             self._sensor_service.dispatch(
                 trigger="rabbitmq.new_message", payload=payload)
-        finally:
+        except:
             continue
 
     def update_trigger(self, trigger):
