@@ -40,11 +40,6 @@ class ActiveMQTopicSensor(Sensor):
         self.username = self._config['sensor_config']['username']
         self.password = self._config['sensor_config']['password']
 
-        self.urls = []
-        for host in hosts:
-            self.urls.append("{}:{}@{}:{}".format(
-                self.username, self.password, host, self.port))
-
         topic_sensor_config = self._config['sensor_config']['activemq_topic_sensor']
         self.topics = topic_sensor_config['topics']
         if not isinstance(self.topics, list):
@@ -58,7 +53,7 @@ class ActiveMQTopicSensor(Sensor):
 
         self.receiver = None
 
-    def start_receiver():
+    def start_receiver(self):
         Container(self.receiver).run()
 
     def run(self):
@@ -79,7 +74,7 @@ class ActiveMQTopicSensor(Sensor):
             self._dispatch_trigger(payload)
 
         # Create Receiver
-        self.receiver = Client(self.urls,
+        self.receiver = Client(self.hosts,
                                self.username,
                                self.password,
                                port=5672,
@@ -88,10 +83,10 @@ class ActiveMQTopicSensor(Sensor):
                                )
 
     def _dispatch_trigger(self, payload):
-        self._logger.debug('Received message {}'.format(topic))
+        self._logger.debug('Received message {}'.format(payload))
         try:
             self._sensor_service.dispatch(
-                trigger="rabbitmq.new_message", payload=payload)
+                trigger="activemq.new_message", payload=payload)
         except:
             pass
 
@@ -152,7 +147,8 @@ class Client(MessagingHandler):
 
     def on_message(self, event):
         body = event.message.body
-        topic = event.message.topic
+        #topic = event.message.topic
+        topic = self.topicName
         payload = {"topic": topic, "body": body}
         # print "New Message:\n{}".format(body)
 
