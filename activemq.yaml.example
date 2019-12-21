@@ -6,9 +6,7 @@ sensor_config:
     - 10.0.0.102
   username: "guest"
   password: "guest"
-  activemq_queue_sensor:
+  activemq_topic_sensor:
     topics:
       - topic1
-    queues:
-      - "queue1"
     deserialization_method: "json"
